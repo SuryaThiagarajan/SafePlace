@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DistressMode">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="DISTRESS MODE"
+            android:textSize="37dp"
+            android:textStyle="bold"
+            android:layout_marginTop="90dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/msgsent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="MESSAGE SENT"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="50dp"/>
+
+            <ImageView
+                android:id="@+id/msgsentimg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@drawable/success" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/tracking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="LOCATION SENT"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="50dp"/>
+
+            <ImageView
+                android:id="@+id/tarckingimg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@drawable/success" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/gethelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GEt HELP"
+            android:background="@color/colorPrimary"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
