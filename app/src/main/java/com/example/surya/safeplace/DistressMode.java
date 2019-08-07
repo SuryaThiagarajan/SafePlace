@@ -43,8 +43,6 @@ public class DistressMode extends AppCompatActivity implements LocationListener 
                 text = text.replaceAll("-", "");
                 while (text.charAt(i) != ' ')
                     text = text.replaceFirst(String.valueOf(text.charAt(i)), "");
-                text = text.replaceFirst(String.valueOf(text.charAt(i)), "");
-                //Toast.makeText(DistressMode.this, text, Toast.LENGTH_LONG).show();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -67,35 +65,18 @@ public class DistressMode extends AppCompatActivity implements LocationListener 
     public void checkAllPermissions()   {
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED
             ||ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-            || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+            || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+            || ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
 
-            Toast.makeText(DistressMode.this,"Please grant permissions",Toast.LENGTH_LONG).show();
+            //Toast.makeText(DistressMode.this,"Please grant permissions",Toast.LENGTH_LONG).show();
 
             ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.SEND_SMS, Manifest.permission.ACCESS_FINE_LOCATION},
+                    new String[]{Manifest.permission.SEND_SMS, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_CONTACTS},
                     MY_PERMISSIONS_REQUEST_SMS);
+            checkAllPermissions();
 
         }   else    {
             Toast.makeText(this, "Tracking location", Toast.LENGTH_LONG).show();
-            locationManager.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER, 20 * 1000, 0, this);
-        }
-    }
-
-    public void checkLocationPermission() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-
-            //Toast.makeText(DistressMode.this,"Please grant GPS permission",Toast.LENGTH_LONG).show();
-
-            // No explanation needed, we can request the permission.
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    MY_PERMISSIONS_REQUEST_LOCATION);
-
-        } else {
-            //Toast.makeText(DistressMode.this,"request works",Toast.LENGTH_LONG).show();
             locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER, 20 * 1000, 0, this);
         }
@@ -105,7 +86,7 @@ public class DistressMode extends AppCompatActivity implements LocationListener 
         try {
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phoneNo, null, msg, null, null);
-            //Toast.makeText(getApplicationContext(), "Message Sent", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Message Sent", Toast.LENGTH_LONG).show();
             return;
         } catch (Exception ex) {
             Toast.makeText(getApplicationContext(), ex.getMessage().toString(),
@@ -127,7 +108,7 @@ public class DistressMode extends AppCompatActivity implements LocationListener 
                 text = text.replaceAll("-", "");
                 while (text.charAt(i) != ' ')
                     text = text.replaceFirst(String.valueOf(text.charAt(i)), "");
-                text = text.replaceFirst(String.valueOf(text.charAt(i)), "");
+                //text = text.replaceFirst(String.valueOf(text.charAt(i)), "");
                 Toast.makeText(DistressMode.this, text, Toast.LENGTH_LONG).show();
                 StringBuilder sb = new StringBuilder();
                 sb.append("Help me, I'm at ").append("http://www.google.com/maps/place/").append(loc.getLatitude()).append(",").append(loc.getLongitude());
@@ -156,7 +137,7 @@ public class DistressMode extends AppCompatActivity implements LocationListener 
 
     @Override
     public void onProviderEnabled(String provider) {
-        //Toast.makeText(getBaseContext(),"on provider enabled",Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(),"on provider enabled",Toast.LENGTH_LONG).show();
     }
 
     @Override
